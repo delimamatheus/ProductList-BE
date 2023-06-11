@@ -1,12 +1,14 @@
 const express = require('express')
 const bodyparser = require('body-parser')
 const sequelize = require('./src/util/database')
-// const User = require('./src/models/user')
+const cors = require('cors')
+const { getUsers } = require('./src/controllers/user')
 
 const app = express()
 
 app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({ extended: false }))
+app.use(cors())
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*')
@@ -32,7 +34,7 @@ sequelize
     .sync()
     .then(result => {
         console.log('Database connected')
-        app.listen(3000)
+        app.listen(3001)
     })
     .catch(err => console.log(err))
 

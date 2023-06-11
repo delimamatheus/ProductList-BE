@@ -6,7 +6,7 @@ services:
     build: .
     image: matheus/node_crud_app
     ports:
-      - "3000:3000"
+      - "3001:3001"
     environment:
       - PG_DB=node_crud_app_db
       - PG_USER=matheus
